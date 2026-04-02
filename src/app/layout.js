@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import Script from "next/script";
 export const metadata = {
   title: {
     default: "DevOrbit Tech – AI Driven Web & Automation Studio",
