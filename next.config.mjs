@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-  images: {
-    domains: ['images.pexels.com'], // yahan aapka external host
-  },
+images: {
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "images.pexels.com",
+    },
+  ],
+}
   reactCompiler: true,
 };
 
