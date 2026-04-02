@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://devorbit.vercel.app
+
+# Sitemaps
+Sitemap: https://devorbit.vercel.app/sitemap.xml
