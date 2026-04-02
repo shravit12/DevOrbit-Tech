@@ -6,11 +6,7 @@ const parser = new Parser();
 async function fetchNews() {
   try {
     const feed = await parser.parseURL("https://news.google.com/rss");
-const dir = path.join(process.cwd(), "data");
-if (!fs.existsSync(dir)) fs.mkdirSync(dir);
-
-const filePath = path.join(dir, "news.js");
-fs.writeFileSync(filePath, fileContent);
+const filePath = path.join(__dirname, "../../data/news.js");
     const now = new Date();
 
     const news = feed.items
