@@ -33,7 +33,7 @@ export default function Hero() {
         </p>
 
         <Link
-          href="/about"
+          href="/contact"
           className="inline-block px-8 py-4 bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:scale-105 transition duration-300"
         >
           Contact Us
