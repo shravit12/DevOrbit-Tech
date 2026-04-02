@@ -87,7 +87,7 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','GTM-KWXMF6GJ');`,
           }}
         />
-<!-- End Google Tag Manager -->
+{/* End Google Tag Manager */}
    
     </head>
     
