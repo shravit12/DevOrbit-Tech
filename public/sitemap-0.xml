@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://devorbit.vercel.app</loc><lastmod>2026-04-02T07:56:13.813Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devorbit.vercel.app/blogs</loc><lastmod>2026-04-02T07:56:13.814Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devorbit.vercel.app/contact</loc><lastmod>2026-04-02T07:56:13.815Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devorbit.vercel.app/news</loc><lastmod>2026-04-02T07:56:13.815Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://devorbit.vercel.app/service</loc><lastmod>2026-04-02T07:56:13.815Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.devorbittech.in</loc><lastmod>2026-04-02T08:18:29.874Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.devorbittech.in/blogs</loc><lastmod>2026-04-02T08:18:29.876Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.devorbittech.in/contact</loc><lastmod>2026-04-02T08:18:29.876Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.devorbittech.in/news</loc><lastmod>2026-04-02T08:18:29.876Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.devorbittech.in/service</loc><lastmod>2026-04-02T08:18:29.876Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
