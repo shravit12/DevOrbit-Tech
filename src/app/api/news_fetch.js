@@ -1,68 +1,87 @@
-const fs = require("fs");
 const Parser = require("rss-parser");
+const fs = require("fs");
 const path = require("path");
+
 const parser = new Parser();
 
-async function fetchNews() {
-  try {
-    const feed = await parser.parseURL("https://news.google.com/rss");
-const filePath = path.join(__dirname, "../../data/news.js");
-    const now = new Date();
+// 📁 file path
+const DATA_FILE = path.join(__dirname, "../../data/news.json");
 
-    const news = feed.items
-      .filter((item) => {
-        const newsDate = new Date(item.pubDate);
-
-        // 🔥 last 6 hours
-        const diff = (now - newsDate) / (1000 * 60 * 60);
-
-        return diff <= 6;
-      })
-      .slice(0, 90)
-      .map((item, index) => ({
-        id: (index + 1).toString(),
-        category: getCategory(item.title),
-        title: item.title || "No Title",
-
-        // 🔥 BEST DESCRIPTION (long + clean)
-        desc: (item.contentSnippet || item.content || "No description")
-          .replace(/\s+/g, " ")
-          .trim()
-          .slice(0, 1900) + "...",
-
-        date: formatDate(item.pubDate),
-      }));
-
-    const fileContent = `const newsData = ${JSON.stringify(news, null, 2)};\n\nexport default newsData;`;
-
-   fs.writeFileSync(filePath, fileContent);
-
-    console.log("✅ Clean long description news saved");
-  } catch (err) {
-    console.error("❌ Error:", err);
+// 📰 Multiple RSS feeds
+const FEEDS = [
+  {
+    url: "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en",
+    category: "General"
+  },
+  {
+    url: "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-IN&gl=IN&ceid=IN:en",
+    category: "Tech"
+  },
+  {
+    url: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en",
+    category: "Business"
+  },
+  {
+    url: "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-IN&gl=IN&ceid=IN:en",
+    category: "Sports"
   }
-}
+];
 
-// category logic
-function getCategory(title = "") {
-  title = title.toLowerCase();
+(async () => {
+  let existingNews = [];
 
-  if (title.includes("ai")) return "AI";
-  if (title.includes("tech")) return "Tech";
-  if (title.includes("business")) return "Business";
-  if (title.includes("crypto")) return "Crypto";
+  // ✅ SAFE LOAD JSON
+  if (fs.existsSync(DATA_FILE)) {
+    const fileContent = fs.readFileSync(DATA_FILE, "utf-8").trim();
 
-  return "General";
-}
+    if (fileContent) {
+      try {
+        existingNews = JSON.parse(fileContent);
+      } catch (err) {
+        console.log("⚠️ JSON corrupted, resetting file...");
+        existingNews = [];
+      }
+    }
+  } else {
+    fs.writeFileSync(DATA_FILE, "[]");
+  }
 
-// date format
-function formatDate(dateStr) {
-  const date = new Date(dateStr);
-  return date.toLocaleString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  });
-}
+  const seen = new Set(existingNews.map(n => n.link));
+  let idCounter = existingNews.length + 1;
+  const newNews = [];
 
-fetchNews();
+  // 🔄 Loop through all feeds
+  for (const feedInfo of FEEDS) {
+    try {
+      const feed = await parser.parseURL(feedInfo.url);
+
+      feed.items.forEach(item => {
+        if (!seen.has(item.link)) {
+          newNews.push({
+            id: (idCounter++).toString(),
+            title: item.title,
+            desc: item.contentSnippet || item.content || item.title,
+            source: item.source || "Google News",
+            date: item.isoDate || new Date().toISOString(),
+            link: item.link,
+            category: feedInfo.category
+          });
+
+          seen.add(item.link);
+        }
+      });
+
+    } catch (err) {
+      console.log(`❌ Error fetching feed: ${feedInfo.url}`);
+    }
+  }
+
+  // 📦 Merge old + new
+  const updatedNews = existingNews.concat(newNews);
+
+  // 💾 Save
+  fs.writeFileSync(DATA_FILE, JSON.stringify(updatedNews, null, 2));
+
+  console.log(`✅ Added ${newNews.length} new news`);
+  console.log(`📊 Total news: ${updatedNews.length}`);
+})();
