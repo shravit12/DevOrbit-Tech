@@ -1,4 +1,4 @@
-import newsData from "@/data/news";
+import newsData from "@/data/news.json";
 import Link from "next/link";
 import Head from "next/head";
 import Navbar from '../../../components/Navbar'
