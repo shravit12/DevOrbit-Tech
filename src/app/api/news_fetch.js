@@ -62,7 +62,7 @@ const FEEDS = [
             title: item.title,
             desc: item.contentSnippet || item.content || item.title,
             source: item.source || "Google News",
-            date: item.isoDate || new Date().toISOString(),
+           date: timeAgo(item.isoDate),
             link: item.link,
             category: feedInfo.category
           });
@@ -85,3 +85,19 @@ const FEEDS = [
   console.log(`✅ Added ${newNews.length} new news`);
   console.log(`📊 Total news: ${updatedNews.length}`);
 })();
+function timeAgo(dateString) {
+  if (!dateString) return "";
+
+  const date = new Date(dateString);
+  const now = new Date();
+
+  const seconds = Math.floor((now - date) / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes} min ago`;
+  if (hours < 24) return `${hours} hours ago`;
+  return `${days} days ago`;
+}
