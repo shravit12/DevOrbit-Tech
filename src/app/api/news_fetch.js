@@ -7,7 +7,7 @@ const parser = new Parser();
 // 📁 file path
 const DATA_FILE = path.join(__dirname, "../../data/news.json");
 
-// 📰 Multiple RSS feeds
+// 📰 RSS feeds
 const FEEDS = [
   {
     url: "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en",
@@ -46,11 +46,21 @@ const FEEDS = [
     fs.writeFileSync(DATA_FILE, "[]");
   }
 
+  // 🧹 🔥 REMOVE NEWS OLDER THAN TODAY 8:00 AM
+  const today8AM = new Date();
+  today8AM.setHours(8, 0, 0, 0);
+
+  existingNews = existingNews.filter(item => {
+    if (!item.date) return false;
+    const newsDate = new Date(item.date);
+    return newsDate >= today8AM;
+  });
+
   const seen = new Set(existingNews.map(n => n.link));
   let idCounter = existingNews.length + 1;
   const newNews = [];
 
-  // 🔄 Loop through all feeds
+  // 🔄 Fetch RSS
   for (const feedInfo of FEEDS) {
     try {
       const feed = await parser.parseURL(feedInfo.url);
@@ -62,7 +72,11 @@ const FEEDS = [
             title: item.title,
             desc: item.contentSnippet || item.content || item.title,
             source: item.source || "Google News",
-           date: timeAgo(item.isoDate),
+
+            // 🔥 IMPORTANT: store full date + formatted time
+            date: item.isoDate,
+            time: formatExactTime(item.isoDate),
+
             link: item.link,
             category: feedInfo.category
           });
@@ -76,7 +90,7 @@ const FEEDS = [
     }
   }
 
-  // 📦 Merge old + new
+  // 📦 Merge
   const updatedNews = existingNews.concat(newNews);
 
   // 💾 Save
@@ -85,19 +99,16 @@ const FEEDS = [
   console.log(`✅ Added ${newNews.length} new news`);
   console.log(`📊 Total news: ${updatedNews.length}`);
 })();
-function timeAgo(dateString) {
+
+// 🕒 FORMAT TIME (ONLY TIME)
+function formatExactTime(dateString) {
   if (!dateString) return "";
 
   const date = new Date(dateString);
-  const now = new Date();
 
-  const seconds = Math.floor((now - date) / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-
-  if (minutes < 1) return "just now";
-  if (minutes < 60) return `${minutes} min ago`;
-  if (hours < 24) return `${hours} hours ago`;
-  return `${days} days ago`;
+  return date.toLocaleTimeString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  });
 }
