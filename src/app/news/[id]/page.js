@@ -31,8 +31,9 @@ export async function generateMetadata({ params }) {
 export default async function NewsDetails({ params }) {
 
   const { id } = await params; // 🔥 FIX
-const canonicalUrl = `https://www.devorbittech.in/news/${news.id}`;
   const news = newsData.find((n) => n.id === id);
+const canonicalUrl = `https://www.devorbittech.in/news/${news.id}`;
+  
 
   if (!news) {
     return (
