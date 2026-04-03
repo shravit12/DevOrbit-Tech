@@ -74,6 +74,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
     <head>
+    <link rel="canonical" href="https://www.devorbittech.in/" />
    {/* Google Tag Manager */}
 <Script
           id="gtm-script"
