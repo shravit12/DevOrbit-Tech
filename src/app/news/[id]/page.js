@@ -1,5 +1,6 @@
 import newsData from "@/data/news";
 import Link from "next/link";
+import Head from "next/head";
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 export async function generateMetadata({ params }) {
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }) {
 export default async function NewsDetails({ params }) {
 
   const { id } = await params; // 🔥 FIX
-
+const canonicalUrl = `https://www.devorbittech.in/news/${news.id}`;
   const news = newsData.find((n) => n.id === id);
 
   if (!news) {
@@ -43,6 +44,9 @@ export default async function NewsDetails({ params }) {
 
   return (
     <>
+     <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
     <Navbar className="bg-black" />
    <div className="min-h-screen bg-linear-to-b from-white to-gray-100 px-6 pt-45 md:py-16">
 
