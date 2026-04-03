@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import newsData from "@/data/news";
+import newsData from "@/data/news.json";
 import Navbar from '@/components/Navbar'
 import Footer from'@/components/Footer'
 
