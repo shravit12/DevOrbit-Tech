@@ -112,7 +112,7 @@ export default function NewsPage() {
 
   {/* RIGHT (DATE) */}
   <span className="text-xs text-zinc-500 md:text-right">
-    {news.date}
+    {news.time}
   </span>
 </div>
 

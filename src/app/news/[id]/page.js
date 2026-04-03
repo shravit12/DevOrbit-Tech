@@ -74,7 +74,7 @@ const canonicalUrl = `https://www.devorbittech.in/news/${news.id}`;
 
     {/* Date */}
     <p className="text-gray-500 text-sm mt-2">
-      {news.date}
+      {news.time}
     </p>
 
     {/* Image (important for WOW) */}
