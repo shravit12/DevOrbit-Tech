@@ -9,23 +9,52 @@ const DATA_FILE = path.join(__dirname, "../../data/news.json");
 
 // 📰 RSS feeds
 const FEEDS = [
-  {
-    url: "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en",
-    category: "General"
-  },
-  {
-    url: "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-IN&gl=IN&ceid=IN:en",
-    category: "Tech"
-  },
-  {
-    url: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en",
-    category: "Business"
-  },
-  {
-    url: "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-IN&gl=IN&ceid=IN:en",
-    category: "Sports"
-  }
+  { url: "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en", category: "General" },
+  { url: "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-IN&gl=IN&ceid=IN:en", category: "Tech" },
+  { url: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en", category: "Business" },
+  { url: "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-IN&gl=IN&ceid=IN:en", category: "Sports" },
+  { url: "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-IN&gl=IN&ceid=IN:en", category: "Entertainment" },
+  { url: "https://news.google.com/rss/headlines/section/topic/SCIENCE?hl=en-IN&gl=IN&ceid=IN:en", category: "Science" },
+  { url: "https://news.google.com/rss/headlines/section/topic/HEALTH?hl=en-IN&gl=IN&ceid=IN:en", category: "Health" },
+  { url: "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-IN&gl=IN&ceid=IN:en", category: "World" },
+  { url: "https://news.google.com/rss/headlines/section/topic/INDIA?hl=en-IN&gl=IN&ceid=IN:en", category: "India" },
+  { url: "https://news.google.com/rss/headlines/section/topic/ENVIRONMENT?hl=en-IN&gl=IN&ceid=IN:en", category: "Environment" }
 ];
+
+// 🔥 SLUG GENERATOR
+function slugify(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+// 🔥 UNIQUE SLUG HANDLER
+function generateUniqueSlug(title, existingSlugs) {
+  let baseSlug = slugify(title);
+  let slug = baseSlug;
+  let counter = 1;
+
+  while (existingSlugs.has(slug)) {
+    slug = `${baseSlug}-${counter++}`;
+  }
+
+  existingSlugs.add(slug);
+  return slug;
+}
+
+// 🕒 FORMAT TIME
+function formatExactTime(dateString) {
+  if (!dateString) return "";
+
+  const date = new Date(dateString);
+
+  return date.toLocaleTimeString("en-IN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  });
+}
 
 (async () => {
   let existingNews = [];
@@ -46,7 +75,7 @@ const FEEDS = [
     fs.writeFileSync(DATA_FILE, "[]");
   }
 
-  // 🧹 🔥 REMOVE NEWS OLDER THAN TODAY 8:00 AM
+  // 🧹 REMOVE OLD NEWS (before today 8AM)
   const today8AM = new Date();
   today8AM.setHours(8, 0, 0, 0);
 
@@ -56,59 +85,50 @@ const FEEDS = [
     return newsDate >= today8AM;
   });
 
-  const seen = new Set(existingNews.map(n => n.link));
-  let idCounter = existingNews.length + 1;
+  // 🔒 TRACK EXISTING LINKS + SLUGS
+  const seenLinks = new Set(existingNews.map(n => n.link));
+  const existingSlugs = new Set(existingNews.map(n => n.slug));
+
   const newNews = [];
 
-  // 🔄 Fetch RSS
+  // 🔄 FETCH RSS
   for (const feedInfo of FEEDS) {
     try {
       const feed = await parser.parseURL(feedInfo.url);
 
       feed.items.forEach(item => {
-        if (!seen.has(item.link)) {
-          newNews.push({
-            id: (idCounter++).toString(),
-            title: item.title,
-            desc: item.contentSnippet || item.content || item.title,
-            source: item.source || "Google News",
+  if (!seenLinks.has(item.link)) {
 
-            // 🔥 IMPORTANT: store full date + formatted time
-            date: item.isoDate,
-            time: formatExactTime(item.isoDate),
+    const slug = generateUniqueSlug(item.title, existingSlugs);
 
-            link: item.link,
-            category: feedInfo.category
-          });
+    newNews.push({
+      id: `${Date.now()}-${Math.floor(Math.random() * 10000)}`, // ✅ unique id
+      slug: slug, // ✅ user-friendly URL
+      title: item.title,
+      desc: item.contentSnippet || item.content || item.title,
+      source: item.source || "Google News",
 
-          seen.add(item.link);
-        }
-      });
+      date: item.isoDate,
+      time: formatExactTime(item.isoDate),
 
+      link: item.link,
+      category: feedInfo.category
+    });
+
+    seenLinks.add(item.link);
+  }
+});
     } catch (err) {
       console.log(`❌ Error fetching feed: ${feedInfo.url}`);
     }
   }
 
-  // 📦 Merge
+  // 📦 MERGE
   const updatedNews = existingNews.concat(newNews);
 
-  // 💾 Save
+  // 💾 SAVE
   fs.writeFileSync(DATA_FILE, JSON.stringify(updatedNews, null, 2));
 
   console.log(`✅ Added ${newNews.length} new news`);
   console.log(`📊 Total news: ${updatedNews.length}`);
 })();
-
-// 🕒 FORMAT TIME (ONLY TIME)
-function formatExactTime(dateString) {
-  if (!dateString) return "";
-
-  const date = new Date(dateString);
-
-  return date.toLocaleTimeString("en-IN", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true
-  });
-}

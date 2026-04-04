@@ -89,11 +89,11 @@ export default function NewsPage() {
             {groupedNews[category].map((news) => (
               
             <div
-  key={news.id}
+  key={news.slug}
   className="p-2 md:px-52 rounded-xl border border-white/10 hover:bg-white/10 transition flex flex-col md:flex-row md:justify-between md:items-center gap-2"
 >
   {/* LEFT */}
-  <Link href={`/news/${news.id}`}>
+  <Link href={`/news/${news.slug}`}>
   <div>
     <h3 className="text-xl md:text-xl font-semibold">
       {news.title}
