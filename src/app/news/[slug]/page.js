@@ -1,24 +1,34 @@
-'use client';
 import newsData from "@/data/news.json";
 import Link from "next/link";
-import Head from "next/head";
-import Navbar from '../../../components/Navbar';
-import Footer from '../../../components/Footer';
-import { useParams } from 'next/navigation';
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-export default function NewsDetails() {
-  const params = useParams();
-  const slug = params?.slug;
+// ✅ Metadata (sync now)
+export async function generateMetadata({ params }) {
+  // await the params using React.use (or just async unwrap)
+  const { slug } = await params; // ✅ unwrap the promise
+  const news = newsData.find(n => n.slug === slug);
 
-  if (!slug) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <h1 className="text-2xl">Slug missing in URL ❌</h1>
-      </div>
-    );
+  if (!news) {
+    return { title: "News Not Found | DevOrbit" };
   }
 
-  // Find news by id, but slug comes from URL
+  return {
+    title: `${news.title} | DevOrbit`,
+    description: news.desc,
+    openGraph: {
+      title: news.title,
+      description: news.desc,
+      images: news.image ? [{ url: news.image }] : [],
+    },
+    alternates: {
+      canonical: `https://www.devorbittech.in/news/${news.slug}`,
+    },
+  };
+}
+
+export default async function NewsDetails({ params }) {
+  const { slug } = await params; // ✅ unwrap promise
   const news = newsData.find(n => n.slug === slug);
 
   if (!news) {
@@ -29,13 +39,10 @@ export default function NewsDetails() {
     );
   }
 
-  const canonicalUrl = `https://www.devorbittech.in/news/${news.slug}`;
-
   return (
     <>
-      {canonicalUrl && <Head><link rel="canonical" href={canonicalUrl} /></Head>}
       <Navbar className="bg-black" />
-      <div className="min-h-screen bg-linear-to-b from-white to-gray-100 px-6 pt-45 md:py-16">
+ <div className="min-h-screen bg-linear-to-b from-white to-gray-100 px-6 pt-45 md:py-16">
 
         {/* Back Button */}
         <Link href="/news" className="inline-flex items-center gap-2 text-xl md:text-sm text-blue-500 hover:text-blue-700 transition mb-8">
