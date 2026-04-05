@@ -1,6 +1,6 @@
 import "./globals.css";
 import Script from "next/script";
-   const isPreview = process.env.VERCEL_URL?.includes("vercel.app");
+   
 
 export const metadata = {
   title: {
@@ -63,9 +63,9 @@ export const metadata = {
  
 
 robots: {
-  index: !isPreview,
-  follow: !isPreview,
-},
+    index: process.env.NODE_ENV === "production",
+    follow: process.env.NODE_ENV === "production",
+  },
 icons: {
   icon: [
     { url: "/logo.ico", sizes: "16x16", type: "image/x-icon" },
