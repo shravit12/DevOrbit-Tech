@@ -1,5 +1,7 @@
 import "./globals.css";
 import Script from "next/script";
+   const isPreview = process.env.VERCEL_URL?.includes("vercel.app");
+
 export const metadata = {
   title: {
     default: "DevOrbit Tech – AI Driven Web & Automation Studio",
@@ -30,7 +32,7 @@ export const metadata = {
   authors: [{ name: "Shravit Sharma" }],
   creator: "Shravit",
 
-  metadataBase: new URL("https://www.devorbittech.in"),
+  metadataBase: new URL("https://devorbittech.in"),
 
   openGraph: {
     title: "DevOrbit Tech – AI & Automation Web Solutions 🚀",
@@ -58,10 +60,12 @@ export const metadata = {
     images: ["/og-image.png"],
   },
 
-  robots: {
-    index: true,
-    follow: true,
-  },
+ 
+
+robots: {
+  index: !isPreview,
+  follow: !isPreview,
+},
 icons: {
   icon: [
     { url: "/logo.ico", sizes: "16x16", type: "image/x-icon" },
@@ -74,7 +78,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
     <head>
-    <link rel="canonical" href="https://www.devorbittech.in/" />
+    <link rel="canonical" href="https://devorbittech.in/" />
    {/* Google Tag Manager */}
 <Script
           id="gtm-script"

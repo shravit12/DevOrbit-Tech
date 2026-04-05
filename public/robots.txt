@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.devorbittech.in/
+Host: https://devorbittech.in
 
 # Sitemaps
-Sitemap: https://www.devorbittech.in/sitemap.xml
+Sitemap: https://devorbittech.in/sitemap.xml
