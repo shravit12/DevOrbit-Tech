@@ -1,4 +1,5 @@
 import newsData from "@/data/news.json";
+import finaldata from "@/data/final-data.json"
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -30,7 +31,13 @@ export async function generateMetadata({ params }) {
 export default async function NewsDetails({ params }) {
   const { slug } = await params; // ✅ unwrap promise
   const news = newsData.find(n => n.slug === slug);
-
+  // ✅ YAHAN DEBUG LAGAO 👇
+ 
+const article = Array.isArray(finaldata)
+  ? finaldata.find(a => String(a.id) === String(news.id))
+  : String(finaldata.id) === String(news.id)
+    ? finaldata
+    : null;
   if (!news) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black text-white">
@@ -42,10 +49,10 @@ export default async function NewsDetails({ params }) {
   return (
     <>
       <Navbar className="bg-black" />
- <div className="min-h-screen bg-linear-to-b from-white to-gray-100 px-6 pt-45 md:py-16">
+ <div className="min-h-screen bg-linear-to-b from-white to-gray-100 px-6 pt-45 py-5 md:py-16 ">
 
         {/* Back Button */}
-        <Link href="/news" className="inline-flex items-center gap-2 text-xl md:text-sm text-blue-500 hover:text-blue-700 transition mb-8">
+        <Link href="/news" className="inline-flex md:pt-12 items-center gap-2 text-xl md:text-sm text-blue-500 hover:text-blue-700 transition mb-8">
           ← Back to News
         </Link>
 
@@ -73,9 +80,11 @@ export default async function NewsDetails({ params }) {
           )}
 
           {/* Content */}
-          <div className="mt-8 text-lg text-gray-700 leading-relaxed space-y-4">
-            <p>{news.desc}</p>
-          </div>
+         <div className="mt-8 text-lg text-gray-700 leading-relaxed space-y-4">
+  {article
+              ? article.content.split("\n\n").map((para, idx) => <p key={idx}>{para}</p>)
+              : <p>{news.desc}</p>}
+</div>
 
         </div>
       </div>
