@@ -43,7 +43,7 @@ function generateUniqueSlug(title, existingSlugs) {
   return slug;
 }
 
-// 🕒 FORMAT TIME
+// 🕒 FORMAT TIME (IST)
 function formatExactTime(dateString) {
   if (!dateString) return "";
 
@@ -52,8 +52,30 @@ function formatExactTime(dateString) {
   return date.toLocaleTimeString("en-IN", {
     hour: "2-digit",
     minute: "2-digit",
-    hour12: true
+    hour12: true,
+    timeZone: "Asia/Kolkata"
   });
+}
+
+// ✅ CHECK TODAY (IST)
+function isTodayIST(dateString) {
+  if (!dateString) return false;
+
+  const newsDate = new Date(dateString);
+
+  const istDate = new Date(
+    newsDate.toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+  );
+
+  const nowIST = new Date(
+    new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
+  );
+
+  return (
+    istDate.getDate() === nowIST.getDate() &&
+    istDate.getMonth() === nowIST.getMonth() &&
+    istDate.getFullYear() === nowIST.getFullYear()
+  );
 }
 
 (async () => {
@@ -75,15 +97,8 @@ function formatExactTime(dateString) {
     fs.writeFileSync(DATA_FILE, "[]");
   }
 
-  // 🧹 REMOVE OLD NEWS (before today 8AM)
-  const today8AM = new Date();
-  today8AM.setHours(8, 0, 0, 0);
-
-  existingNews = existingNews.filter(item => {
-    if (!item.date) return false;
-    const newsDate = new Date(item.date);
-    return newsDate >= today8AM;
-  });
+  // 🧹 REMOVE OLD NEWS (ONLY TODAY IST)
+  existingNews = existingNews.filter(item => isTodayIST(item.date));
 
   // 🔒 TRACK EXISTING LINKS + SLUGS
   const seenLinks = new Set(existingNews.map(n => n.link));
@@ -97,27 +112,27 @@ function formatExactTime(dateString) {
       const feed = await parser.parseURL(feedInfo.url);
 
       feed.items.forEach(item => {
-  if (!seenLinks.has(item.link)) {
+        if (
+          !seenLinks.has(item.link) &&
+          isTodayIST(item.isoDate) // ✅ FILTER NEW NEWS ALSO
+        ) {
+          const slug = generateUniqueSlug(item.title, existingSlugs);
 
-    const slug = generateUniqueSlug(item.title, existingSlugs);
+          newNews.push({
+            id: `${Date.now()}-${Math.floor(Math.random() * 10000)}`,
+            slug: slug,
+            title: item.title,
+            desc: item.contentSnippet || item.content || item.title,
+            source: item.source || "Google News",
+            date: item.isoDate,
+            time: formatExactTime(item.isoDate),
+            link: item.link,
+            category: feedInfo.category
+          });
 
-    newNews.push({
-      id: `${Date.now()}-${Math.floor(Math.random() * 10000)}`, // ✅ unique id
-      slug: slug, // ✅ user-friendly URL
-      title: item.title,
-      desc: item.contentSnippet || item.content || item.title,
-      source: item.source || "Google News",
-
-      date: item.isoDate,
-      time: formatExactTime(item.isoDate),
-
-      link: item.link,
-      category: feedInfo.category
-    });
-
-    seenLinks.add(item.link);
-  }
-});
+          seenLinks.add(item.link);
+        }
+      });
     } catch (err) {
       console.log(`❌ Error fetching feed: ${feedInfo.url}`);
     }
@@ -125,6 +140,9 @@ function formatExactTime(dateString) {
 
   // 📦 MERGE
   const updatedNews = existingNews.concat(newNews);
+
+  // 🔽 SORT LATEST FIRST
+  updatedNews.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   // 💾 SAVE
   fs.writeFileSync(DATA_FILE, JSON.stringify(updatedNews, null, 2));

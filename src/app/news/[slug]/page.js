@@ -81,9 +81,12 @@ const article = Array.isArray(finaldata)
 
           {/* Content */}
          <div className="mt-8 text-lg text-gray-700 leading-relaxed space-y-4">
-  {article
-              ? article.content.split("\n\n").map((para, idx) => <p key={idx}>{para}</p>)
-              : <p>{news.desc}</p>}
+ {article?.content?.trim()
+  ? article.content.split("\n\n").map((para, idx) => (
+      <p key={idx}>{para}</p>
+    ))
+  : <p>{news.desc}</p>
+}
 </div>
 
         </div>
