@@ -5,6 +5,27 @@ import newsData from "@/data/news.json";
 import Navbar from '@/components/Navbar'
 import Footer from'@/components/Footer'
 
+
+
+export const metadata = {
+  title: "Latest News Today | News Orbital",
+  description: "Breaking news and updates from all categories.",
+  openGraph: {
+    title: "News Orbital",
+    description: "Latest trending news and updates",
+    url: "https://www.devorbittech.in/news",
+    siteName: "News Orbital",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+};
+
 export default function NewsPage() {
   // Group by category
   const [activeCategory, setActiveCategory] = useState("All");
