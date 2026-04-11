@@ -42,17 +42,17 @@ export default async function BlogDetails({ params }) {
   return (
     <>
     <Navbar className="bg-black"/>
-    <div className="min-h-screen bg-white/90 text-black px-6 py-60">
+    <div className="min-h-screen bg-white/90 text-black px-5 py-40">
       
-      <div className="max-w-3xl mx-auto space-y-8">
+      <div className="max-w-3xl mx-auto space-y-8 ">
 
         {/* TITLE */}
-        <h1 className="text-4xl md:text-3xl font-bold leading-tight">
+        <h1 className="text-3xl md:text-3xl font-extrabold md:font-extrabold leading-9 border-t border-zinc-300 pt-12">
           {blog.title}
         </h1>
 
         {/* META */}
-        <div className="flex justify-between text-sm text-zinc-400">
+        <div className="flex justify-between text-sm text-zinc-500">
           <span>{new Date(blog.date).toLocaleDateString()}</span>
           
         </div>
@@ -61,12 +61,12 @@ export default async function BlogDetails({ params }) {
         <div className="h-12px bg-black/10"></div>
 
         {/* CONTENT */}
-        <div className="text-lg leading-9 text-zinc-700 bg-zinc-90 whitespace-pre-line">
+        <div className="text-lg leading-7 text-zinc-700 bg-zinc-90 whitespace-pre-line border-t border-zinc-300 pt-12">
           <ReactMarkdown
   components={{
-    h1: ({node, ...props}) => <h1 className="text-5xl font-bold my-4" {...props} />,
-    h2: ({node, ...props}) => <h2 className="text-5xl font-bold my-3" {...props} />,
-    p: ({node, ...props}) => <p className="my-2" {...props} />,
+    h1: ({node, ...props}) => <h1 className="text-4xl font-bold my-2" {...props} />,
+    h2: ({node, ...props}) => <h2 className="text-3xl font-bold my-0" {...props} />,
+    p: ({node, ...props}) => <p className="my-0" {...props} />,
     li: ({node, ...props}) => <li className="ml-6 list-disc" {...props} />,
     strong: ({node, ...props}) => <strong className="font-bold text-2xl" {...props} />,
     em: ({node, ...props}) => <em className="italic" {...props} />,

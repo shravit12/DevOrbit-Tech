@@ -26,8 +26,8 @@ export default function Blogs() {
 
   return (
     <>
-      <div className="min-h-screen bg-black text-white px-6 py-8 pt-40">
-        <Navbar />
+      <div className="min-h-screen bg-gradient-to-br from-white via-gray-300 to-white  text-white px-6 py-8 pt-40">
+        <Navbar className="bg-black" />
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
           
@@ -68,13 +68,13 @@ export default function Blogs() {
           ) : (
             blogs.map((blog) => (
               <Link href={`/blogs/${blog.slug}`} key={blog.slug}>
-                <div className="group py-6 border-b border-white/10 cursor-pointer flex flex-col justify-between min-h-55 hover:bg-black/70 px-4 rounded-lg transition relative">
+                <div className="group py-6 border-b border-white/10 cursor-pointer bg-gradient-to-br from-gray-900 via-gray-800 to-black flex flex-col justify-between min-h-55 hover:bg-black/70 px-4 rounded-lg transition relative">
 
                   <h2 className="text-2xl md:text-3xl font-bold group-hover:text-blue-400 line-clamp-2">
                     {blog.name}
                   </h2>
 
-                  <p className="text-zinc-400 mt-2 text-sm md:text-base line-clamp-2 ">
+                  <p className="text-white mt-2 text-sm md:text-base line-clamp-2 ">
                     {blog.desc}
                   </p>
 
