@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import Link from "next/link";
 export default function WhyDeveloper() {
   return (
     <>
@@ -38,7 +38,7 @@ export default function WhyDeveloper() {
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:scale-105 transition"
+              className="bg-white hover:bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:scale-105 transition"
             >
               <h3 className="text-xl font-semibold text-blue-400 mb-2">
                 {item.title}
@@ -66,10 +66,11 @@ export default function WhyDeveloper() {
             ].map((service, i) => (
               <div
                 key={i}
-                className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-4"
+                className="bg-white/10 backdrop-blur-4xl border lg:text-white/10 hover:text-white border-white/20 rounded-xl p-4"
               >
-                ✅ {service}
+                 {service}
               </div>
+              
             ))}
           </div>
         </section>
@@ -135,12 +136,12 @@ export default function WhyDeveloper() {
             Let’s Build Something Amazing Together 🚀
           </h2>
 
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="inline-block px-8 py-4 bg-linear-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:scale-105 transition"
           >
             Contact Me
-          </a>
+          </Link>
         </section>
 
       </main>
