@@ -3,6 +3,7 @@ import Navbar from  '@/components/Navbar'
 import ReactMarkdown from "react-markdown";
 import Footer from '@/components/Footer'
 
+
 export async function generateMetadata({ params }) {
   const { slug } = await params; // ✅ IMPORTANT FIX
 
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: blog.name,
-    description: blog.description,
+   
   };
 }
 
