@@ -2,7 +2,7 @@ import blogs from "@/data/blogs.json";
 import Navbar from  '@/components/Navbar'
 import ReactMarkdown from "react-markdown";
 import Footer from '@/components/Footer'
-
+import ScrollToTop from "@/components/ScrollTop";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params; // ✅ IMPORTANT FIX
@@ -80,6 +80,7 @@ export default async function BlogDetails({ params }) {
       </div>
 
     </div>
+    <ScrollToTop />
     <Footer />
     </>
   );

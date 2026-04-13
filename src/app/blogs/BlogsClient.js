@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import blogs from "@/data/blogs.json";
 import B_log from "@/components/Blog_log";
+import ScrollToTop from "@/components/ScrollTop";
 export default function Blogs() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -101,6 +102,7 @@ const filteredBlogs =
 
         </div>
       </div>
+    <ScrollToTop />
 
       <Footer />
     </>

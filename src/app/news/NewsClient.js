@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import newsData from "@/data/news.json";
-
+import ScrollToTop from "@/components/ScrollTop";
 export default function NewsClient() {
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -16,6 +16,7 @@ export default function NewsClient() {
   }, {});
 
   return (
+    <>
     <div className="min-h-screen bg-white text-black px-6 py-45 pb-0">
 
       {/* HEADER */}
@@ -50,23 +51,25 @@ export default function NewsClient() {
       </div>
 
       {/* CATEGORY SCROLL */}
-      <div className="w-full overflow-x-auto scrollbar-hide">
-        <div className="flex gap-4 whitespace-nowrap py-4">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full ${
-                activeCategory === cat
-                  ? "bg-black text-white"
-                  : "bg-gray-200 text-black"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
+   <div className="sticky top-15 z-40 bg-white">
+  <div className="w-full overflow-x-auto scrollbar-hide">
+    <div className="flex gap-4 whitespace-nowrap py-4 px-2">
+      {categories.map((cat) => (
+        <button
+          key={cat}
+          onClick={() => setActiveCategory(cat)}
+          className={`px-5 py-2 rounded-full ${
+            activeCategory === cat
+              ? "bg-black text-white"
+              : "bg-gray-200 text-black"
+          }`}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
 
       {/* NEWS LIST */}
       {Object.keys(groupedNews)
@@ -112,5 +115,7 @@ export default function NewsClient() {
           </div>
         ))}
     </div>
+    <ScrollToTop />
+    </>
   );
 }

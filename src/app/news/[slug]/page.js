@@ -3,6 +3,7 @@ import finaldata from "@/data/final-data.json"
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollTop";
 
 // ✅ Metadata (sync now)
 export async function generateMetadata({ params }) {
@@ -91,6 +92,8 @@ const article = Array.isArray(finaldata)
 
         </div>
       </div>
+          <ScrollToTop />
+      
       <Footer />
     </>
   );
