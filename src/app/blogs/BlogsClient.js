@@ -5,11 +5,16 @@ import Link from "next/link";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import blogs from "@/data/blogs.json";
-
+import B_log from "@/components/Blog_log";
 export default function Blogs() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
+const [activeTab, setActiveTab] = useState("All");
+const categories = ["All", ...new Set(blogs.map((b) => b.category))];
+const filteredBlogs =
+  activeTab === "All"
+    ? blogs
+    : blogs.filter((b) => b.category === activeTab);
   const handleSubscribe = async () => {
     if (!email) return;
 
@@ -28,7 +33,11 @@ export default function Blogs() {
     <>
       <div className="min-h-screen bg-linear-to-br from-white via-gray-300 to-white  text-white px-6 py-8 pt-40">
         <Navbar className="bg-black" />
-
+     <B_log 
+  activeTab={activeTab} 
+  setActiveTab={setActiveTab} 
+  tabs={categories} 
+/>
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
           
           {blogs.length === 0 ? (
@@ -66,7 +75,7 @@ export default function Blogs() {
               )}
             </div>
           ) : (
-            blogs.map((blog) => (
+            filteredBlogs.map((blog) => (
               <Link href={`/blogs/${blog.slug}`} key={blog.slug}>
                 <div className="group py-6 border-b border-white/10 cursor-pointer bg-linear-to-br from-gray-900 via-gray-800 to-black flex flex-col justify-between min-h-55 hover:bg-black/70 px-4 rounded-lg transition relative">
 
