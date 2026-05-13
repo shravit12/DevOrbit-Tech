@@ -44,23 +44,40 @@ const [menuOpen, setMenuOpen] = useState(false);
 
        {/* Desktop Menu */}
 <div className="hidden md:flex gap-6 text-sm">
+   <Link href="/portfolio">
+    <button className="px-5 py-0 rounded-full bg-yellow-300 text-black font-medium hover:bg-neutral-200 transition duration-300">
+      Portfolio
+    </button>
+  </Link>
   <Link href="/blogs">Blog</Link>
   <Link href="/service">Services</Link>
   <Link href="/news">news</Link>
   <Link href="/contact">contact</Link>
+  <Link href="/insights">insight</Link>
+
 </div>
 
-{/* Mobile Button */}
-<button
-  className="md:hidden text-white text-xl"
-  onClick={() => setMenuOpen(!menuOpen)}
->
-  ☰
-</button>
+<div className="md:hidden flex items-center gap-3">
+  
+  {/* Portfolio Button */}
+  <Link href="/portfolio">
+    <button className="px-4 py-1 rounded-full bg-yellow-300 text-black text-sm font-medium hover:bg-neutral-200 transition duration-300">
+      Portfolio
+    </button>
+  </Link>
+
+  {/* Menu Button */}
+  <button
+    className="text-white text-2xl"
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    ☰
+  </button>
+</div>
 
 <div
-  className={`md:hidden absolute  left-0 top-full w-full  bg-linear-to-r from-blue-500 to-purple-600  overflow-hidden transition-all duration-300 ${
-    menuOpen ? "max-h-90 py-12  " : "max-h-0"
+  className={`md:hidden absolute  left-0 top-full w-full  bg-linear-to-r from-blue-500 to-purple-600  overflow-hidden transition-all duration-200 ${
+    menuOpen ? "max-h-100 py-5  " : "max-h-0"
   }`}
 >
   <div className="flex flex-col items-center gap-10 text-4xl rounded-full text-white/90">
@@ -68,6 +85,7 @@ const [menuOpen, setMenuOpen] = useState(false);
     <Link href="/service" onClick={() => setMenuOpen(false)}>Services</Link>
     <Link href="/news" onClick={() => setMenuOpen(false)}>News</Link>
     <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+    <Link href="/insights" onClick={() => setMenuOpen(false)}>insight</Link>
   </div>
 </div>
       </div>
