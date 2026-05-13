@@ -53,7 +53,7 @@ const [menuOpen, setMenuOpen] = useState(false);
   <Link href="/service">Services</Link>
   <Link href="/news">news</Link>
   <Link href="/contact">contact</Link>
-  <Link href="/insights">insight</Link>
+  {/* <Link href="/insights">insight</Link> */}
 
 </div>
 
@@ -85,7 +85,7 @@ const [menuOpen, setMenuOpen] = useState(false);
     <Link href="/service" onClick={() => setMenuOpen(false)}>Services</Link>
     <Link href="/news" onClick={() => setMenuOpen(false)}>News</Link>
     <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-    <Link href="/insights" onClick={() => setMenuOpen(false)}>insight</Link>
+    {/* <Link href="/insights" onClick={() => setMenuOpen(false)}>insight</Link> */}
   </div>
 </div>
       </div>
