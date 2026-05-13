@@ -22,11 +22,11 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "Search Image API  APP",
+    title: "Typing Speed Tester ",
     description:
-      "Real-timeAPI Image Generater From API .",
-    tech: ["React", "tailwind", "API"],
-    link: "https://search-image-app-frontend.vercel.app/",
+      "Speed Tester by Keyboard .",
+    tech: ["React", "tailwind"],
+    link: "https://typing-speed-tester-kappa-two.vercel.app/",
     status: "Completed",
   },
   {
@@ -38,6 +38,15 @@ const projectsData = [
     link: "https://extension-manager-beta.vercel.app/",
     status: "Completed",
   },
+   {
+    id: 5,
+    title: "Country Details App",
+    description:
+      "Frontend Mentor / Get details about all countrys by api",
+    tech: ["React", "tailwind", "api"],
+    link: "https://country-details-app-seven.vercel.app/",
+    status: "Completed",
+  },
 ];
 
 export default function PortfolioPage() {
@@ -45,6 +54,24 @@ export default function PortfolioPage() {
     <div className="min-h-screen bg-[#0B0F19] text-white px-6 py-14 font-sans relative overflow-hidden">
 
       {/* BACKGROUND */}
+      {/* INTERACTIVE GRID BACKGROUND */}
+<div className="absolute inset-0 -z-10 overflow-hidden">
+
+  {/* grid */}
+  <div
+  className="absolute inset-0 animate-grid bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[60px_60px]"
+/>
+
+  {/* glow orb top */}
+  <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] animate-float" />
+
+  {/* glow orb bottom */}
+  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-floatSlow" />
+
+  {/* radial fade */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent,rgba(11,15,25,0.95))]" />
+
+</div>
      {/* BASE DARK SURFACE */}
 <div className="absolute inset-0 -z-10 bg-[#0A0C10]" />
 
@@ -280,11 +307,12 @@ export default function PortfolioPage() {
 
     {/* BIG LEFT */}
     <div className="md:col-span-2 group relative overflow-hidden rounded-3xl">
-
+<Link href="/gallery">
       <img
         src="/download.png"
         className="w-full aspect-16/10 object-cover"
       />
+      
 
       {/* overlay */}
       <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
@@ -299,12 +327,12 @@ export default function PortfolioPage() {
         </div>
 
       </div>
-
+</Link>
     </div>
 
     {/* RIGHT STACK */}
     <div className="flex flex-col gap-6">
-
+<Link href="/gallery">
       {/* top */}
       <div className="group relative overflow-hidden rounded-3xl">
 
@@ -318,10 +346,10 @@ export default function PortfolioPage() {
         </div>
 
       </div>
-
+</Link>
       {/* bottom */}
       <div className="group relative overflow-hidden rounded-3xl">
-
+<Link href="/gallery">
         <img
           src="/s_v3.webp"
           className="w-full h-50 object-cover transition duration-700 group-hover:scale-105"
@@ -330,7 +358,7 @@ export default function PortfolioPage() {
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-end p-4">
           <span className="text-white text-sm">Speed Tester</span>
         </div>
-
+</Link>
       </div>
 
     </div>
@@ -341,10 +369,11 @@ export default function PortfolioPage() {
   <div className="grid md:grid-cols-3 gap-6 mt-6">
 
     {["/s_v4.webp", "/s_v5.webp", "/s_v6.webp"].map((img, i) => (
+      
       <div
         key={i}
         className="group relative overflow-hidden rounded-3xl"
-      >
+      ><Link href="/gallery">
 
         <img
           src={img}
@@ -354,8 +383,9 @@ export default function PortfolioPage() {
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-end p-4">
           <span className="text-white text-sm">Project</span>
         </div>
-
+ </Link>
       </div>
+     
     ))}
 
   </div>
@@ -380,6 +410,8 @@ export default function PortfolioPage() {
       I build solutions that actually matter.
     </p>
   </div>
+
+
 
   {/* grid */}
   <div className="grid md:grid-cols-3 gap-6">
@@ -439,6 +471,231 @@ export default function PortfolioPage() {
 
 </div>
 
+
+{/* TECH STACK MARQUEE */}
+<div className="max-w-7xl mx-auto mt-28 overflow-hidden">
+
+  {/* heading */}
+  <div className="text-center mb-10">
+    <h2 className="text-3xl md:text-4xl font-semibold text-white">
+      Technologies I Use
+    </h2>
+
+    <p className="text-gray-400 mt-3">
+      Building modern and scalable digital experiences.
+    </p>
+  </div>
+
+  {/* marquee wrapper */}
+  <div className="relative overflow-hidden">
+
+    {/* fade left */}
+    <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-[#0B0F19] to-transparent z-10" />
+
+    {/* fade right */}
+    <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-[#0B0F19] to-transparent z-10" />
+
+    <div className="flex gap-6 animate-marquee whitespace-nowrap">
+
+      {[
+        "React",
+        "Next.js",
+        "Node.js",
+        "MongoDB",
+        "Tailwind",
+        "Figma",
+        "Express",
+        "JavaScript",
+        "Vercel",
+        "GitHub",
+      ].map((tech, i) => (
+        <div
+          key={i}
+          className="px-6 py-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl text-white text-sm"
+        >
+          {tech}
+        </div>
+      ))}
+
+      {[
+        "React",
+        "Next.js",
+        "Node.js",
+        "MongoDB",
+        "Tailwind",
+        "Figma",
+        "Express",
+        "JavaScript",
+        "Vercel",
+        "GitHub",
+      ].map((tech, i) => (
+        <div
+          key={"copy-" + i}
+          className="px-6 py-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl text-white text-sm"
+        >
+          {tech}
+        </div>
+      ))}
+
+    </div>
+  </div>
+</div>
+
+{/* SERVICES SECTION */}
+<div className="max-w-6xl mx-auto mt-32">
+
+  {/* heading */}
+  <div className="text-center mb-14">
+
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 backdrop-blur-md mb-5">
+      <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+      Services I Offer
+    </div>
+
+    <h2 className="text-4xl md:text-5xl font-semibold text-white">
+      Helping brands build
+      <span className="bg-linear-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text">
+        {" "}modern digital experiences
+      </span>
+    </h2>
+
+    <p className="text-gray-400 mt-5 max-w-2xl mx-auto leading-relaxed">
+      From beautiful interfaces to scalable backend systems —
+      I create fast, modern and user-focused web solutions.
+    </p>
+
+  </div>
+
+  {/* services grid */}
+  <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+    {/* CARD */}
+    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl hover:-translate-y-2 transition duration-500">
+
+      {/* glow */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-br from-cyan-500/10 via-transparent to-transparent" />
+
+      {/* icon */}
+      <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-400/20 flex items-center justify-center text-cyan-300 text-2xl">
+        ✦
+      </div>
+
+      <h3 className="mt-6 text-xl font-semibold text-white">
+        Frontend Development
+      </h3>
+
+      <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+        Responsive and modern interfaces using React, Next.js and Tailwind CSS.
+      </p>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {["React", "Next.js", "Tailwind"].map((item) => (
+          <span
+            key={item}
+            className="text-[10px] px-2 py-1 rounded-md bg-white/10 text-gray-300"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+
+    </div>
+
+    {/* CARD */}
+    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl hover:-translate-y-2 transition duration-500">
+
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-br from-purple-500/10 via-transparent to-transparent" />
+
+      <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-400/20 flex items-center justify-center text-purple-300 text-2xl">
+        ⚡
+      </div>
+
+      <h3 className="mt-6 text-xl font-semibold text-white">
+        Backend Systems
+      </h3>
+
+      <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+        Scalable APIs and backend architecture using Node.js, Express and MongoDB.
+      </p>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {["Node.js", "MongoDB", "Express"].map((item) => (
+          <span
+            key={item}
+            className="text-[10px] px-2 py-1 rounded-md bg-white/10 text-gray-300"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+
+    </div>
+
+    {/* CARD */}
+    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl hover:-translate-y-2 transition duration-500">
+
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-br from-pink-500/10 via-transparent to-transparent" />
+
+      <div className="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-400/20 flex items-center justify-center text-pink-300 text-2xl">
+        ◎
+      </div>
+
+      <h3 className="mt-6 text-xl font-semibold text-white">
+        UI / UX Design
+      </h3>
+
+      <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+        Clean and engaging user experiences with modern layouts and visual hierarchy.
+      </p>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {["Figma", "GIMP", "UI Design"].map((item) => (
+          <span
+            key={item}
+            className="text-[10px] px-2 py-1 rounded-md bg-white/10 text-gray-300"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+
+    </div>
+
+    {/* CARD */}
+    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl hover:-translate-y-2 transition duration-500">
+
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-br from-emerald-500/10 via-transparent to-transparent" />
+
+      <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center text-emerald-300 text-2xl">
+        ↗
+      </div>
+
+      <h3 className="mt-6 text-xl font-semibold text-white">
+        Performance Optimization
+      </h3>
+
+      <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+        Faster websites with optimization techniques focused on speed and SEO.
+      </p>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {["SEO", "Optimization", "Speed"].map((item) => (
+          <span
+            key={item}
+            className="text-[10px] px-2 py-1 rounded-md bg-white/10 text-gray-300"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 {/* CTA */}
         <div className="max-w-5xl mx-auto mt-32">
 
@@ -466,15 +723,16 @@ export default function PortfolioPage() {
 
       {/* buttons */}
       <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-
+       <Link href="/service">
         <button className="px-6 py-3 rounded-xl bg-linear-to-r from-cyan-500 to-purple-500 text-black font-medium hover:scale-105 transition">
           Start a Project
         </button>
-
+        </Link>
+       <a href="https://github.com/shravit12">
         <button className="px-6 py-3 rounded-xl border border-white/10 text-white hover:bg-white/10 transition">
           View Work
         </button>
-
+        </a>
       </div>
 
     </div>
@@ -482,6 +740,9 @@ export default function PortfolioPage() {
   </div>
 
 </div>
+
+
+
 
       </div>
     </div>
