@@ -83,12 +83,14 @@ export default function HireMe() {
 
           <div className="flex flex-wrap justify-center gap-6 text-3xl">
 
-            <a
-              href="mailto:sharmashravit@gmail.com"
-              className="hover:text-blue-400"
-            >
-              <FaEnvelope />
-            </a>
+           <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=sharmashravit@gmail.com"
+  className="hover:text-blue-400"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <FaEnvelope />
+</a>
 
             <a
               href="https://wa.me/918219186568"
@@ -99,7 +101,7 @@ export default function HireMe() {
             </a>
 
             <a
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/dev.orbit_12/"
               target="_blank"
               className="hover:text-pink-400"
             >
@@ -107,7 +109,7 @@ export default function HireMe() {
             </a>
 
             <a
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/profile.php?id=61578562102973&sk=about"
               target="_blank"
               className="hover:text-blue-500"
             >
@@ -115,7 +117,7 @@ export default function HireMe() {
             </a>
 
             <a
-              href="https://github.com/"
+              href="https://github.com/shravit12"
               target="_blank"
               className="hover:text-white"
             >
@@ -134,7 +136,7 @@ export default function HireMe() {
           <div className="flex flex-wrap justify-between gap-2">
 
             <a
-              href="https://www.fiverr.com/"
+              href="https://www.fiverr.com/shravitsharma/buying?source=avatar_menu_profile"
               target="_blank"
               className="px-7 py-3 bg-green-600 rounded-xl hover:scale-105 transition"
             >
@@ -142,7 +144,7 @@ export default function HireMe() {
             </a>
 
             <a
-              href="https://www.upwork.com/"
+              href="https://www.upwork.com/freelancers/~011a2fbca793265330"
               target="_blank"
               className="px-7 py-3 bg-blue-600 rounded-xl hover:scale-105 transition"
             >
@@ -150,7 +152,7 @@ export default function HireMe() {
             </a>
 
             <a
-              href="https://www.freelancer.com/"
+              href="https://www.freelancer.in/u/sharmashravit2"
               target="_blank"
               className="px-7 py-3 bg-purple-600 rounded-xl hover:scale-105 transition"
             >
@@ -166,12 +168,9 @@ export default function HireMe() {
             Ready to Start Your Project? 🚀
           </h2>
 
-          <a
-            href="mailto:sharmashravit@gmail.com"
-            className="inline-block px-8 py-4 bg-linear-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:scale-105 transition"
-          >
-            Send Mail
-          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sharmashravit@gmail.com"   className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:scale-105 transition" target="_blank">
+  Send Mail
+</a>
         </section>
 
       </main>
