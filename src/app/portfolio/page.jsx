@@ -2,8 +2,17 @@
 
 import Link from "next/link";
 const projectsData = [
-  {
+   {
     id: 1,
+    title: "Path Finder App",
+    description:
+      " Create A visual Map PAth Shortest Finder",
+    tech: ["React", "tailwind", "Next.Js"],
+    link: "https://path-finder-three-zeta.vercel.app/",
+    status: "Completed",
+  },
+  {
+    id: 2,
     title: "Medical Clinic website",
     description:
       "Website for Doctors and Clinicals websites style ",
@@ -12,7 +21,7 @@ const projectsData = [
     status: "Completed",
   },
   {
-    id: 2,
+    id: 3,
     title: "Slow Scroller Web page ",
     description:
       "Fella Website for slow scroller website .",
@@ -21,7 +30,7 @@ const projectsData = [
     status: "Completed",
   },
   {
-    id: 3,
+    id: 4,
     title: "Typing Speed Tester ",
     description:
       "Speed Tester by Keyboard .",
@@ -30,7 +39,7 @@ const projectsData = [
     status: "Completed",
   },
   {
-    id: 4,
+    id: 5,
     title: "Extension Manager",
     description:
       "Frontend Mentor / UI of Extension manager",
@@ -39,7 +48,7 @@ const projectsData = [
     status: "Completed",
   },
    {
-    id: 5,
+    id: 6,
     title: "Country Details App",
     description:
       "Frontend Mentor / Get details about all countrys by api",
@@ -47,6 +56,7 @@ const projectsData = [
     link: "https://country-details-app-seven.vercel.app/",
     status: "Completed",
   },
+ 
 ];
 
 export default function PortfolioPage() {
