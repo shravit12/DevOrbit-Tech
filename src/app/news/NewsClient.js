@@ -42,7 +42,7 @@ export default function NewsClient() {
 
           {/* TITLE */}
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-center">
-           DevOrbit News
+            News
           </h1>
 
           <div className="hidden md:block w-32"></div>

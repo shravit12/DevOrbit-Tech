@@ -51,7 +51,7 @@ const [menuOpen, setMenuOpen] = useState(false);
   </Link>
   <Link href="/blogs">Blog</Link>
   <Link href="/service">Services</Link>
-  {/* <Link href="/news">news</Link> */}
+  <Link href="/news">news</Link>
   <Link href="/contact">contact</Link>
   {/* <Link href="/insights">insight</Link> */}
 
@@ -83,7 +83,7 @@ const [menuOpen, setMenuOpen] = useState(false);
   <div className="flex flex-col items-center gap-10 text-4xl rounded-full text-white/90">
     <Link href="/blogs" onClick={() => setMenuOpen(false)}>Blog</Link>
     <Link href="/service" onClick={() => setMenuOpen(false)}>Services</Link>
-    {/* <Link href="/news" onClick={() => setMenuOpen(false)}>News</Link> */}
+    <Link href="/news" onClick={() => setMenuOpen(false)}>News</Link>
     <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
     {/* <Link href="/insights" onClick={() => setMenuOpen(false)}>insight</Link> */}
   </div>
