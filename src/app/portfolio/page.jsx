@@ -1,758 +1,278 @@
 "use client";
 
 import Link from "next/link";
+import { Space_Grotesk, Outfit } from "next/font/google";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"], 
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+});
+
 const projectsData = [
-   {
+  {
     id: 1,
     title: "Path Finder App",
-    description:
-      " Create A visual Map PAth Shortest Finder",
-    tech: ["React", "tailwind", "Next.Js"],
+    description: "Create a visual Map Path Shortest Finder with custom algorithms.",
+    tech: ["React", "Tailwind", "Next.js"],
     link: "https://path-finder-three-zeta.vercel.app/",
     status: "Completed",
   },
   {
     id: 2,
-    title: "Medical Clinic website",
-    description:
-      "Website for Doctors and Clinicals websites style ",
+    title: "Medical Clinic Portal",
+    description: "Website for Doctors and Clinics with scheduling integration.",
     tech: ["React", "Node.js", "MongoDB", "Express"],
     link: "https://med-clinic-one.vercel.app/",
     status: "Completed",
   },
   {
     id: 3,
-    title: "Slow Scroller Web page ",
-    description:
-      "Fella Website for slow scroller website .",
+    title: "Slow Scroller Web",
+    description: "Fella Website for a smooth and slow scrolling experience.",
     tech: ["React.js", "AI", "Tailwind"],
     link: "https://fella-web.vercel.app/",
     status: "Completed",
   },
   {
     id: 4,
-    title: "Typing Speed Tester ",
-    description:
-      "Speed Tester by Keyboard .",
-    tech: ["React", "tailwind"],
+    title: "Typing Speed Tester",
+    description: "Real-time Speed Tester by Keyboard with accuracy metrics.",
+    tech: ["React", "Tailwind"],
     link: "https://typing-speed-tester-kappa-two.vercel.app/",
     status: "Completed",
   },
   {
     id: 5,
     title: "Extension Manager",
-    description:
-      "Frontend Mentor / UI of Extension manager",
-    tech: ["React", "tailwind", "data"],
+    description: "Frontend Mentor / UI of a modern Extension manager.",
+    tech: ["React", "Tailwind", "Data"],
     link: "https://extension-manager-beta.vercel.app/",
     status: "Completed",
   },
-   {
+  {
     id: 6,
     title: "Country Details App",
-    description:
-      "Frontend Mentor / Get details about all countrys by api",
-    tech: ["React", "tailwind", "api"],
+    description: "Get comprehensive details about all countries via REST API.",
+    tech: ["React", "Tailwind", "API"],
     link: "https://country-details-app-seven.vercel.app/",
     status: "Completed",
   },
- 
 ];
 
 export default function PortfolioPage() {
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-white px-6 py-14 font-sans relative overflow-hidden">
-
-      {/* BACKGROUND */}
-      {/* INTERACTIVE GRID BACKGROUND */}
-<div className="absolute inset-0 -z-10 overflow-hidden">
-
-  {/* grid */}
-  <div
-  className="absolute inset-0 animate-grid bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[60px_60px]"
-/>
-
-  {/* glow orb top */}
-  <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] animate-float" />
-
-  {/* glow orb bottom */}
-  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-floatSlow" />
-
-  {/* radial fade */}
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent,rgba(11,15,25,0.95))]" />
-
-</div>
-     {/* BASE DARK SURFACE */}
-<div className="absolute inset-0 -z-10 bg-[#0A0C10]" />
-
-{/* SOFT GRID (VERY SUBTLE) */}
-<div className="absolute inset-0 -z-10 opacity-[0.35]
-  bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),
-      linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)]
-  bg-size-[40px_40px]" />
-
-{/* TOP LIGHT SHEEN */}
-<div className="absolute -top-50 left-1/2 -translate-x-1/2 w-175 h-175
-  bg-linear-to-b from-cyan-500/10 via-transparent to-transparent blur-[120px] -z-10" />
-
-{/* LEFT SOFT GLOW */}
-<div className="absolute top-1/3 -left-37.5 w-100 h-100
-  bg-blue-500 rounded-full blur-[140px] -z-10 animate-float" />
-{/* RIGHT SOFT GLOW */}
-<div className="absolute bottom-1/4 -right-37.5 w-112.5 h-112.5
-  bg-purple-500 rounded-full blur-[140px] -z-10 animate-floatSlow" />
-{/* CENTER DEPTH LAYER */}
-<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_60%)]" />
-      {/* CONTENT WRAPPER */}
-      <div className="relative z-10">
-
-        {/* HEADER */}
-        <div className="text-center mb-14 relative">
-
-  {/* subtle badge */}
-  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 backdrop-blur-md mb-5">
-    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-    Available for freelance • Building modern web apps
-  </div>
-
-  {/* name / identity */}
-  <h2 className="text-sm tracking-[0.25em] text-gray-400 uppercase">
-    Designer • Developer • Builder
-  </h2>
-
-  {/* main title */}
-  <h1 className="mt-3 text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-    <span className="text-white">Hi, I'm </span>
-    <span className="bg-linear-to-r from-cyan-400 via-white to-purple-400 text-transparent bg-clip-text">
-      Shravit
-    </span>
-  </h1>
-
-  {/* underline accent */}
-  <div className="w-20 h-0.5 bg-linear-to-r from-cyan-500 to-purple-500 mx-auto mt-4 rounded-full opacity-80" />
-
-  {/* subtitle */}
-  <p className="mt-6 text-gray-400 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-    I craft clean, scalable and high-performance web experiences using modern technologies.
-    Focused on simplicity, speed and user experience.
-  </p>
-
-  {/* CTA hint */}
-  <div className="mt-6 flex items-center justify-center gap-4 text-xs text-gray-500">
-    <span>React</span>
-    <span className="w-1 h-1 rounded-full bg-gray-600"></span>
-    <span>Next.js</span>
-    <span className="w-1 h-1 rounded-full bg-gray-600"></span>
-    <span>Node.js</span>
-  </div>
-
-</div>
-{/* Featured Card */}
-<div className="max-w-6xl mx-auto mb-24">
-
-  {/* label */}
-  <div className="mb-6 flex items-center justify-between">
-    <h2 className="text-sm text-gray-500 uppercase tracking-widest">
-      Featured Project
-    </h2>
-    <span className="text-xs text-gray-600">Case Study</span>
-  </div>
-
-  {/* main layout */}
-  <div className="grid lg:grid-cols-2 gap-10 items-center">
-
-    {/* LEFT CONTENT */}
-    <div>
-
-      <h3 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
-        IMDB Frontend Clone
-      </h3>
-
-      <p className="mt-4 text-gray-400 max-w-md leading-relaxed">
-        Built a responsive IMDb clone that displays movies, ratings, and details using API integration, with modern UI and smooth user experience
-      </p>
-
-      {/* tech */}
-      <div className="mt-5 flex flex-wrap gap-2">
-        {["React", "tailwind", "Vite"].map((t) => (
-          <span
-            key={t}
-            className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-
-      {/* CTA */}
-      <div className="mt-6 flex items-center gap-4">
-        <a
-          href="https://imdb-clone-frontend-sepia.vercel.app/"
-          className="text-sm font-medium text-white hover:text-cyan-300 transition"
-        >
-          View Project →
-        </a>
-
-        <span className="text-xs text-gray-500">Live Demo</span>
-      </div>
-
-    </div>
-
-    {/* RIGHT VISUAL */}
-    <div className="relative">
-  <div className="rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-xl">
-    
-    <div className="h-56 rounded-xl bg-linear-to-br from-gray-800 to-gray-900 overflow-hidden">
-      <img
-        src="/download.png"
-        alt="Project Preview"
-        className="w-full h-full object-cover"
-      />
-    </div>
-
-  </div>
-
-  {/* subtle glow */}
-  <div className="absolute -z-10 inset-0 bg-linear-to-r from-cyan-500/10 to-purple-500/10 blur-2xl" />
-</div>
-
-  </div>
-
-</div>
-
-
-        {/* GRID */}
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-
-         {projectsData.map((project) => (
-  <div
-    key={project.id}
-    className="group relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/30 hover:shadow-[0_0_40px_rgba(34,211,238,0.08)]"
-  >
-
-    {/* glow edge effect */}
-    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-r from-cyan-500/10 via-transparent to-purple-500/10 pointer-events-none" />
-
-    {/* top accent line */}
-    <div className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl bg-linear-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-60" />
-
-    {/* header */}
-    <div className="flex items-center justify-between">
-
-      <span
-        className={`text-[10px] font-semibold px-2.5 py-1 rounded-full tracking-wide ${
-          project.status === "Completed"
-            ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/20"
-            : "bg-amber-500/20 text-amber-300 border border-amber-500/20"
-        }`}
-      >
-        {project.status}
-      </span>
-
-      <span className="text-[10px] text-gray-500 uppercase tracking-widest">
-        {project.tech.length} STACK
-      </span>
-
-    </div>
-
-    {/* title */}
-    <h2 className="mt-4 text-lg font-semibold text-white group-hover:text-cyan-300 transition">
-      {project.title}
-    </h2>
-
-    {/* description */}
-    <p className="mt-2 text-xs text-gray-400 leading-relaxed">
-      {project.description}
-    </p>
-
-    {/* tech */}
-    <div className="mt-4 flex flex-wrap gap-2">
-      {project.tech.map((t, i) => (
-        <span
-          key={i}
-          className="text-[10px] px-2.5 py-1 rounded-md bg-white/10 text-gray-300 border border-white/5"
-        >
-          {t}
-        </span>
-      ))}
-    </div>
-
-    {/* footer */}
-    <div className="mt-5 flex items-center justify-between">
-
-      <a
-        href={project.link}
-        className="text-xs font-medium text-white hover:text-cyan-300 transition flex items-center gap-1"
-      >
-        Open Project
-        <span className="group-hover:translate-x-1 transition">→</span>
-      </a>
-
-      <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-xs text-gray-400 group-hover:border-cyan-400 group-hover:text-cyan-300 transition">
-        ↗
-      </div>
-
-    </div>
-
-  </div>
-))}
-        </div>
-
-
-{/* GALLERY  */}
-       <div className="max-w-6xl mx-auto mt-32">
-
-  {/* heading */}
-  <div className="mb-12 text-center">
-    <h2 className="text-3xl font-semibold text-white">
-      Selected Work
-    </h2>
-    <p className="text-gray-400 mt-2">
-      Real projects. Real impact.
-    </p>
-  </div>
-
-  {/* layout */}
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-    {/* BIG LEFT */}
-    <div className="md:col-span-2 group relative overflow-hidden rounded-3xl">
-<Link href="/gallery">
-      <img
-        src="/download.png"
-        className="w-full aspect-16/10 object-cover"
-      />
+    // THEME: "Abyssal Slate" background - an extremely dark, rich blue/black
+    <div className={`min-h-screen bg-[#010308] text-white px-6 py-20 md:py-32 relative overflow-hidden ${outfit.className}`}>
       
+      {/* 🌌 FRESH BACKGROUND EFFECTS: "Bioluminescent Grid" */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Subtle tech grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+        
+        {/* Electric Lime & Cyan Glows */}
+        <div className="absolute -top-40 -left-40 w-[40rem] h-[40rem] bg-lime-500/10 rounded-full blur-[150px] animate-pulse" />
+        <div className="absolute top-1/2 right-0 w-[30rem] h-[30rem] bg-cyan-600/10 rounded-full blur-[130px]" />
+        <div className="absolute -bottom-40 left-1/4 w-[40rem] h-[40rem] bg-emerald-600/10 rounded-full blur-[150px]" />
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+        {/* HERO HEADER */}
+        <div className="text-center mb-32 relative">
+          {/* Cyber-Mint Badge */}
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-lime-500/30 bg-lime-500/10 text-xs text-lime-300 backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(132,204,22,0.15)]">
+            <span className="w-2 h-2 rounded-full bg-lime-400 animate-ping absolute"></span>
+            <span className="w-2 h-2 rounded-full bg-lime-400 relative shadow-[0_0_10px_rgba(132,204,22,0.8)]"></span>
+            AVAILABLE FOR FREELANCE • MODERN WEB SOLUTIONS
+          </div>
 
-      {/* overlay */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+          <h2 className="text-xs md:text-sm tracking-[0.3em] text-gray-500 uppercase font-semibold mb-6">
+            Design • Develop • Deploy
+          </h2>
 
-        <div>
-          <h3 className="text-white text-xl font-semibold">
-            IMDB Clone 
-          </h3>
-          <p className="text-gray-300 text-sm mt-1">
-            frontend only
+          <h1 className={`mt-2 text-6xl md:text-[5.5rem] lg:text-[7.5rem] font-bold tracking-tighter leading-[0.9] ${spaceGrotesk.className}`}>
+            <span className="text-white">Hi, I'm </span>
+            <br className="md:hidden" />
+            {/* Liquid Tech Gradient (Lime -> Emerald -> Cyan) */}
+            <span className="bg-gradient-to-r from-lime-300 via-emerald-400 to-cyan-500 text-transparent bg-clip-text drop-shadow-[0_0_40px_rgba(52,211,153,0.3)]">
+              Shravit
+            </span>
+          </h1>
+
+          <div className="w-24 h-1.5 bg-gradient-to-r from-lime-400 to-cyan-500 mx-auto mt-12 rounded-full shadow-[0_0_20px_rgba(52,211,153,0.4)]" />
+
+          <p className="mt-10 text-gray-400 text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
+            I build blazing-fast, scalable web experiences using Next.js & .NET. 
+            Focused on pixel-perfect design and enterprise-grade performance.
           </p>
         </div>
 
-      </div>
-</Link>
-    </div>
+        {/* FEATURED PROJECT */}
+        <div className="max-w-6xl mx-auto mb-32">
+          <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
+            <h2 className={`text-lg text-white uppercase tracking-widest ${spaceGrotesk.className}`}>
+              Featured Engineering
+            </h2>
+            <span className="text-xs uppercase tracking-widest text-lime-400 font-bold bg-lime-500/10 px-4 py-1.5 rounded-full border border-lime-500/20">Case Study</span>
+          </div>
 
-    {/* RIGHT STACK */}
-    <div className="flex flex-col gap-6">
-<Link href="/gallery">
-      {/* top */}
-      <div className="group relative overflow-hidden rounded-3xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center bg-[#050B14]/60 p-6 md:p-10 rounded-[2.5rem] border border-white/5 hover:border-lime-500/30 transition-all duration-500 backdrop-blur-xl">
+            <div className="pr-0">
+              <h3 className={`text-4xl md:text-5xl font-bold text-white leading-tight ${spaceGrotesk.className}`}>
+                IMDB Frontend Architecture
+              </h3>
+              <p className="mt-6 text-gray-400 text-lg leading-relaxed">
+                A highly responsive movie database portal. Engineered with advanced state management, complex API routing, and a seamless cinematic user experience.
+              </p>
+              
+              <div className="mt-8 flex flex-wrap gap-3">
+                {["React", "Tailwind CSS", "Vite", "REST API"].map((t) => (
+                  <span key={t} className="text-sm font-medium px-4 py-2 rounded-xl bg-[#0A1220] border border-white/10 text-emerald-200">
+                    {t}
+                  </span>
+                ))}
+              </div>
+              
+              <div className="mt-10 flex items-center gap-6">
+                <a href="https://imdb-clone-frontend-sepia.vercel.app/" className="group px-6 py-3 rounded-full bg-white text-[#010308] text-sm font-bold hover:bg-lime-400 hover:shadow-[0_0_20px_rgba(132,204,22,0.4)] hover:scale-105 transition-all flex items-center gap-2">
+                  View Live Site 
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
+            </div>
 
-        <img
-          src="/s_v2.webp"
-          className="w-full h-50 object-cover transition duration-700 group-hover:scale-105"
-        />
-
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-          <span className="text-white text-sm">Slide Slow</span>
+            <div className="relative group">
+              <div className="rounded-3xl border border-white/10 bg-[#020611] p-2 transition duration-500 group-hover:border-lime-500/50 group-hover:shadow-[0_0_40px_rgba(52,211,153,0.2)]">
+                <div className="aspect-[4/3] rounded-2xl bg-[#050A15] overflow-hidden relative">
+                  <div className="absolute inset-0 bg-lime-500/20 mix-blend-overlay group-hover:opacity-0 transition duration-500 z-10"></div>
+                  <img src="/download.png" alt="Project Preview" className="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-      </div>
-</Link>
-      {/* bottom */}
-      <div className="group relative overflow-hidden rounded-3xl">
-<Link href="/gallery">
-        <img
-          src="/s_v3.webp"
-          className="w-full h-50 object-cover transition duration-700 group-hover:scale-105"
-        />
-
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-          <span className="text-white text-sm">Speed Tester</span>
+        {/* PROJECTS GRID */}
+        <div className="mb-12 max-w-6xl mx-auto">
+            <h2 className={`text-3xl text-white font-bold ${spaceGrotesk.className}`}>
+              Other Works.
+            </h2>
         </div>
-</Link>
-      </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          {projectsData.map((project) => (
+            <div key={project.id} className="group relative rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.04] hover:border-emerald-500/40 flex flex-col justify-between h-full backdrop-blur-sm">
+              
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <span className={`text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider ${project.status === "Completed" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30" : "bg-white/10 text-white border border-white/20"}`}>
+                    {project.status}
+                  </span>
+                  <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+                    {project.tech.length} TECH
+                  </span>
+                </div>
 
-    </div>
+                <h2 className={`text-2xl font-bold text-white group-hover:text-lime-300 transition-colors ${spaceGrotesk.className}`}>
+                  {project.title}
+                </h2>
 
-  </div>
+                <p className="mt-4 text-sm text-gray-400 leading-relaxed">
+                  {project.description}
+                </p>
 
-  {/* bottom row */}
-  <div className="grid md:grid-cols-3 gap-6 mt-6">
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.tech.map((t, i) => (
+                    <span key={i} className="text-[11px] font-medium px-3 py-1.5 rounded-lg bg-[#050A15] border border-white/10 text-gray-300">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-    {["/s_v4.webp", "/s_v5.webp", "/s_v6.webp"].map((img, i) => (
-      
-      <div
-        key={i}
-        className="group relative overflow-hidden rounded-3xl"
-      ><Link href="/gallery">
-
-        <img
-          src={img}
-          className="w-full h-50 object-cover transition duration-700 group-hover:scale-105"
-        />
-
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-end p-4">
-          <span className="text-white text-sm">Project</span>
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                <a href={project.link} className="text-sm font-semibold text-white hover:text-emerald-400 transition flex items-center gap-2">
+                  Explore <span className="group-hover:translate-x-1 transition">→</span>
+                </a>
+                <div className="w-10 h-10 rounded-full border border-white/10 bg-[#020611] flex items-center justify-center text-sm text-gray-400 group-hover:border-emerald-400 group-hover:text-emerald-400 group-hover:bg-emerald-500/10 transition-all">
+                  ↗
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
- </Link>
-      </div>
-     
-    ))}
 
-  </div>
+        {/* SERVICES SECTION */}
+        <div className="max-w-6xl mx-auto mt-40">
+          <div className="text-center mb-20">
+            <h2 className={`text-5xl md:text-7xl font-bold text-white leading-tight ${spaceGrotesk.className}`}>
+              Engineering <br />
+              <span className="bg-gradient-to-r from-lime-400 via-emerald-400 to-cyan-500 text-transparent bg-clip-text">Digital Excellence</span>
+            </h2>
+            <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto leading-relaxed">
+              End-to-end solutions. From pixel-perfect frontend interfaces to highly secure, scalable backend databases.
+            </p>
+          </div>
 
-</div>
-<div className="flex justify-center mt-12">
-  <Link href="/gallery">
-  <button className="px-8 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white font-medium hover:bg-white hover:text-black transition duration-300">
-    View All
-  </button>
-</Link>
-</div>
-{/* What I DO  */}
-        <div className="max-w-5xl mx-auto mt-28">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="group rounded-3xl border border-white/10 bg-white/[0.02] p-8 hover:bg-lime-500/5 hover:border-lime-500/30 transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-lime-500/10 border border-lime-400/20 flex items-center justify-center text-lime-400 text-2xl mb-8 font-bold">✦</div>
+              <h3 className={`text-2xl font-bold text-white mb-4 ${spaceGrotesk.className}`}>Frontend</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">React, Next.js, and Tailwind architectures built for raw speed and SEO.</p>
+            </div>
 
-  {/* heading */}
-  <div className="text-center mb-12">
-    <h2 className="text-3xl font-semibold text-white">
-      What I Solve
-    </h2>
-    <p className="text-gray-400 mt-3">
-      I build solutions that actually matter.
-    </p>
-  </div>
+            <div className="group rounded-3xl border border-white/10 bg-white/[0.02] p-8 hover:bg-emerald-500/5 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400 text-2xl mb-8 font-bold">⚡</div>
+              <h3 className={`text-2xl font-bold text-white mb-4 ${spaceGrotesk.className}`}>Backend</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">C#, .NET 8, Node.js, and complex SQL database management.</p>
+            </div>
 
+            <div className="group rounded-3xl border border-white/10 bg-white/[0.02] p-8 hover:bg-cyan-500/5 hover:border-cyan-500/30 transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 text-2xl mb-8 font-bold">◎</div>
+              <h3 className={`text-2xl font-bold text-white mb-4 ${spaceGrotesk.className}`}>Dashboards</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">Interactive data visualization and enterprise analytics using ECharts.</p>
+            </div>
 
-
-  {/* grid */}
-  <div className="grid md:grid-cols-3 gap-6">
-
-    {/* card 1 */}
-    <div className="group p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl hover:-translate-y-2 transition">
-
-      <h3 className="text-white font-medium text-lg">
-        Slow Websites
-      </h3>
-
-      <p className="text-gray-400 text-sm mt-2">
-        Optimized performance using modern frameworks and best practices.
-      </p>
-
-      <div className="mt-4 text-xs text-cyan-400">
-        → Fast loading & smooth UX
-      </div>
-
-    </div>
-
-    {/* card 2 */}
-    <div className="group p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl hover:-translate-y-2 transition">
-
-      <h3 className="text-white font-medium text-lg">
-        Messy Codebases
-      </h3>
-
-      <p className="text-gray-400 text-sm mt-2">
-        Clean architecture and scalable structure for long-term growth.
-      </p>
-
-      <div className="mt-4 text-xs text-purple-400">
-        → Maintainable & scalable code
-      </div>
-
-    </div>
-
-    {/* card 3 */}
-    <div className="group p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl hover:-translate-y-2 transition">
-
-      <h3 className="text-white font-medium text-lg">
-        Low Conversion
-      </h3>
-
-      <p className="text-gray-400 text-sm mt-2">
-        UI/UX improvements focused on engagement and conversions.
-      </p>
-
-      <div className="mt-4 text-xs text-pink-400">
-        → Better user experience
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-{/* TECH STACK MARQUEE */}
-<div className="max-w-7xl mx-auto mt-28 overflow-hidden">
-
-  {/* heading */}
-  <div className="text-center mb-10">
-    <h2 className="text-3xl md:text-4xl font-semibold text-white">
-      Technologies I Use
-    </h2>
-
-    <p className="text-gray-400 mt-3">
-      Building modern and scalable digital experiences.
-    </p>
-  </div>
-
-  {/* marquee wrapper */}
-  <div className="relative overflow-hidden">
-
-    {/* fade left */}
-    <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-[#0B0F19] to-transparent z-10" />
-
-    {/* fade right */}
-    <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-[#0B0F19] to-transparent z-10" />
-
-    <div className="flex gap-6 animate-marquee whitespace-nowrap">
-
-      {[
-        "React",
-        "Next.js",
-        "Node.js",
-        "MongoDB",
-        "Tailwind",
-        "Figma",
-        "Express",
-        "JavaScript",
-        "Vercel",
-        "GitHub",
-      ].map((tech, i) => (
-        <div
-          key={i}
-          className="px-6 py-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl text-white text-sm"
-        >
-          {tech}
+            <div className="group rounded-3xl border border-white/10 bg-white/[0.02] p-8 hover:bg-blue-500/5 hover:border-blue-500/30 transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-400/20 flex items-center justify-center text-blue-400 text-2xl mb-8 font-bold">↗</div>
+              <h3 className={`text-2xl font-bold text-white mb-4 ${spaceGrotesk.className}`}>Scale</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">Optimized queries, caching strategies, and fast loading performance.</p>
+            </div>
+          </div>
         </div>
-      ))}
 
-      {[
-        "React",
-        "Next.js",
-        "Node.js",
-        "MongoDB",
-        "Tailwind",
-        "Figma",
-        "Express",
-        "JavaScript",
-        "Vercel",
-        "GitHub",
-      ].map((tech, i) => (
-        <div
-          key={"copy-" + i}
-          className="px-6 py-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl text-white text-sm"
-        >
-          {tech}
+        {/* FINAL CTA */}
+        <div className="max-w-4xl mx-auto mt-40 mb-20">
+          <div className="relative overflow-hidden rounded-[3rem] border border-lime-500/20 bg-[#030A14] p-12 md:p-20 text-center shadow-[0_0_50px_rgba(52,211,153,0.1)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.15),transparent_70%)]" />
+            
+            <div className="relative z-10">
+              <h2 className={`text-4xl md:text-6xl font-bold text-white leading-tight mb-6 ${spaceGrotesk.className}`}>
+                Ready to build <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-cyan-500">the next big thing?</span>
+              </h2>
+              <p className="text-gray-400 text-lg max-w-md mx-auto mb-10">
+                Let's turn your ideas into a high-performance reality.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-5">
+                <Link href="/contact">
+                  <button className="w-full sm:w-auto px-10 py-4 rounded-full bg-gradient-to-r from-lime-400 to-emerald-500 text-[#010308] font-bold text-sm tracking-wide hover:shadow-[0_0_30px_rgba(52,211,153,0.5)] hover:scale-105 transition-all">
+                    Start a Project
+                  </button>
+                </Link>
+                <a href="https://github.com/shravit12">
+                  <button className="w-full sm:w-auto px-10 py-4 rounded-full border border-white/20 bg-[#010308] text-white font-bold text-sm tracking-wide hover:bg-white/10 transition-colors">
+                    View GitHub
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      ))}
-
-    </div>
-  </div>
-</div>
-
-{/* SERVICES SECTION */}
-<div className="max-w-6xl mx-auto mt-32">
-
-  {/* heading */}
-  <div className="text-center mb-14">
-
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 backdrop-blur-md mb-5">
-      <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-      Services I Offer
-    </div>
-
-    <h2 className="text-4xl md:text-5xl font-semibold text-white">
-      Helping brands build
-      <span className="bg-linear-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text">
-        {" "}modern digital experiences
-      </span>
-    </h2>
-
-    <p className="text-gray-400 mt-5 max-w-2xl mx-auto leading-relaxed">
-      From beautiful interfaces to scalable backend systems —
-      I create fast, modern and user-focused web solutions.
-    </p>
-
-  </div>
-
-  {/* services grid */}
-  <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-
-    {/* CARD */}
-    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl hover:-translate-y-2 transition duration-500">
-
-      {/* glow */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-br from-cyan-500/10 via-transparent to-transparent" />
-
-      {/* icon */}
-      <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-400/20 flex items-center justify-center text-cyan-300 text-2xl">
-        ✦
-      </div>
-
-      <h3 className="mt-6 text-xl font-semibold text-white">
-        Frontend Development
-      </h3>
-
-      <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-        Responsive and modern interfaces using React, Next.js and Tailwind CSS.
-      </p>
-
-      <div className="mt-5 flex flex-wrap gap-2">
-        {["React", "Next.js", "Tailwind"].map((item) => (
-          <span
-            key={item}
-            className="text-[10px] px-2 py-1 rounded-md bg-white/10 text-gray-300"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-
-    </div>
-
-    {/* CARD */}
-    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl hover:-translate-y-2 transition duration-500">
-
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-br from-purple-500/10 via-transparent to-transparent" />
-
-      <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-400/20 flex items-center justify-center text-purple-300 text-2xl">
-        ⚡
-      </div>
-
-      <h3 className="mt-6 text-xl font-semibold text-white">
-        Backend Systems
-      </h3>
-
-      <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-        Scalable APIs and backend architecture using Node.js, Express and MongoDB.
-      </p>
-
-      <div className="mt-5 flex flex-wrap gap-2">
-        {["Node.js", "MongoDB", "Express"].map((item) => (
-          <span
-            key={item}
-            className="text-[10px] px-2 py-1 rounded-md bg-white/10 text-gray-300"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-
-    </div>
-
-    {/* CARD */}
-    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl hover:-translate-y-2 transition duration-500">
-
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-br from-pink-500/10 via-transparent to-transparent" />
-
-      <div className="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-400/20 flex items-center justify-center text-pink-300 text-2xl">
-        ◎
-      </div>
-
-      <h3 className="mt-6 text-xl font-semibold text-white">
-        UI / UX Design
-      </h3>
-
-      <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-        Clean and engaging user experiences with modern layouts and visual hierarchy.
-      </p>
-
-      <div className="mt-5 flex flex-wrap gap-2">
-        {["Figma", "GIMP", "UI Design"].map((item) => (
-          <span
-            key={item}
-            className="text-[10px] px-2 py-1 rounded-md bg-white/10 text-gray-300"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-
-    </div>
-
-    {/* CARD */}
-    <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl hover:-translate-y-2 transition duration-500">
-
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-linear-to-br from-emerald-500/10 via-transparent to-transparent" />
-
-      <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center text-emerald-300 text-2xl">
-        ↗
-      </div>
-
-      <h3 className="mt-6 text-xl font-semibold text-white">
-        Performance Optimization
-      </h3>
-
-      <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-        Faster websites with optimization techniques focused on speed and SEO.
-      </p>
-
-      <div className="mt-5 flex flex-wrap gap-2">
-        {["SEO", "Optimization", "Speed"].map((item) => (
-          <span
-            key={item}
-            className="text-[10px] px-2 py-1 rounded-md bg-white/10 text-gray-300"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-{/* CTA */}
-        <div className="max-w-5xl mx-auto mt-32">
-
-  <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur-xl">
-
-    {/* glow background */}
-    <div className="absolute inset-0 bg-linear-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 opacity-50" />
-
-    {/* soft spotlight */}
-    <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-100 h-100 bg-cyan-500/10 rounded-full blur-[120px]" />
-
-    {/* content */}
-    <div className="relative">
-
-      {/* heading */}
-      <h2 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
-        Let’s build something 
-        <span className="bg-linear-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text"> great together</span>
-      </h2>
-
-      {/* subtitle */}
-      <p className="mt-4 text-gray-400 max-w-lg mx-auto">
-        I help turn ideas into scalable, high-performance web products.
-      </p>
-
-      {/* buttons */}
-      <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-       <Link href="/service">
-        <button className="px-6 py-3 rounded-xl bg-linear-to-r from-cyan-500 to-purple-500 text-black font-medium hover:scale-105 transition">
-          Start a Project
-        </button>
-        </Link>
-       <a href="https://github.com/shravit12">
-        <button className="px-6 py-3 rounded-xl border border-white/10 text-white hover:bg-white/10 transition">
-          View Work
-        </button>
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
 
       </div>
     </div>
